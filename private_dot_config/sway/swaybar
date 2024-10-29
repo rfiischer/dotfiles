@@ -1,0 +1,21 @@
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    position top
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+
+    colors {
+        statusline 		#ffffff
+        background 		$gray0
+        focused_workspace 	$teal1 	$gray1 $white
+        active_workspace 	$gray1 	$gray2 $gray3
+        urgent_workspace 	$yellow $gray0 $pink
+        inactive_workspace 	$gray1 	$gray1 $gray2
+    }
+}
+

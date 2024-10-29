@@ -1,0 +1,6 @@
+# Autostart programs
+#exec dbus-update-activation-environment --all
+#exec gnome-keyring-daemon --start --components=secrets
+exec waybar
+exec "/home/fischer/Downloads/bwSyncShare-Linux64-3.11.1-build-20334.AppImage" --background
+

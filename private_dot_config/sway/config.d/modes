@@ -1,0 +1,34 @@
+# Resizing containers:
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10ppt
+    bindsym $down resize grow height 10ppt
+    bindsym $up resize shrink height 10ppt
+    bindsym $right resize grow width 10ppt
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10ppt
+    bindsym Down resize grow height 10ppt
+    bindsym Up resize shrink height 10ppt
+    bindsym Right resize grow width 10ppx
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Setting opacity
+mode "opacity" {
+    bindsym j opacity set 0.6
+    bindsym k opacity set 0.8
+    bindsym l opacity set 1
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+t mode "opacity"
+

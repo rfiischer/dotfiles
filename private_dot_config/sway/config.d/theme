@@ -1,0 +1,7 @@
+# Theme
+# class 			border 	background 	text 	indicator 	child_border 
+client.focused 			$teal1 	$gray0 		$white 	$teal2 		$teal1
+client.focused_inactive 	$yellow $gray0 		$gray3 	$teal2 		$gray0
+client.focused_tab_title 	$teal1 	$gray0 		$gray3
+client.urgent 			$gray0 	$yellow 	$gray0 	$teal2 		$gray0
+client.unfocused 		$gray1 	$gray0 		$gray2 	$teal2 		$gray0
