@@ -6,6 +6,7 @@ include /etc/sway/config-vars.d/*
 # Custom includes
 include /home/fischer/.config/sway/config.d/variables
 include /home/fischer/.config/sway/config.d/colors
+include /home/fischer/.config/sway/config.d/settings
 include /home/fischer/.config/sway/config.d/*
 
 # This is default

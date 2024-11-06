@@ -1,7 +1,10 @@
 # Set a simple color scheme
 set $white 	#ffffff
 set $yellow 	#f4dd5d
-set $gray0 	#000010
+set $yellowt 	#f4dd5d90
+set $gray0 	#101010
+set $gray0t 	#10101090
+set $gray1 	#151d26
 set $gray1 	#151d26
 set $gray2 	#484e55
 set $gray3 	#a0a5a0

@@ -22,7 +22,7 @@
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec zenity --question --text='Do you really want to exit sway?' && swaymsg exit
 #
 # Moving around:
 #
@@ -117,4 +117,10 @@
 
 # Function keys
 bindsym XF86Calculator exec gnome-calculator
+
+# Lock
+bindsym $mod+Shift+s exec swaylock
+
+# Notifications
+bindsym $mod+Shift+n exec swaync-client -t -sw
 
