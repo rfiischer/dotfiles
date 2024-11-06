@@ -118,10 +118,10 @@ fi
 
 # customization of bash done by Rodrigo:
 ssh-cel() {
-    ssh fischer@$1.cel.kit.edu
+    ssh {{.cel_username}}@$1{{.domain}}
 }
 
-alias git-cel="ssh git@gw1.cel.kit.edu"
+alias git-cel="ssh git@{{.data_server}}"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
