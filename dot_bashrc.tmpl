@@ -142,7 +142,7 @@ if test -f ~/.cel_machines; then
     SSH_AUTOCOMPLETE=$(cat ~/.cel_machines | awk -F ':|,' '{printf tolower($1)" "}')
     alias list-cel='cat ~/.cel_machines'
     complete -W "${SSH_AUTOCOMPLETE}" ssh-cel
-    alias chkload-cel="source ~/check_server_utilization.dat"
+    alias chkload-cel="source ~/.scripts/check_server_utilization"
 fi
 
 shopt -s extglob globstar
