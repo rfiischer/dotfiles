@@ -1,0 +1,4 @@
+SERVERS=$(cat ~/.cel_machines | awk -F ':|,' '{printf tolower($1)" "}')
+for SERVER in $SERVERS; do
+    echo -e "Host ${SERVER}\n    Hostname ${SERVER}{{.domain}}\n" >> ~/.ssh/config
+done

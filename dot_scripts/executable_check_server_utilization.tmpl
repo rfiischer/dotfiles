@@ -1,0 +1,111 @@
+#!/bin/bash
+
+username="{{.cel_username}}"
+domain="{{.domain}}"
+
+# ANSI color codes
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
+# Thresholds
+THRESHOLD_HIGH=900  # 90.0%
+THRESHOLD_MEDIUM=750 # 75.0%
+
+# Get server utilization function
+get_server_utilization() {
+    local server=$1
+    local username=$2
+
+    cpu=$(ssh -n $username@$server uptime | awk -F'[a-z]:' '{ print $2}' | cut -d ',' -f 1)
+    cores=$(ssh -n $username@$server nproc)
+    cpu_percentage=$(echo "$cpu $cores" | awk '{printf "%.0f", ($1 / $2 * 100) * 10}')
+    mem_percentage=$(ssh -n $username@$server free -m | awk 'NR==2{printf "%.0f", ($3*100/$2) * 10 }')
+
+    if ssh -n $username@$server command -v nvidia-smi > /dev/null; then
+        gpu_percentage=$(ssh -n $username@$server nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | awk '{sum+=$1} END {if (NR > 0) printf "%.0f", (sum/NR) * 10}')
+    else
+        gpu_percentage="*"
+    fi
+
+    top_users=$(ssh -n $username@$server ps -eo user,%cpu --sort=-%cpu | head -n 4 | tail -n 3 | awk '{printf "%-10s(%5.1f) ", $1, $2}')
+
+    echo "$cpu_percentage $mem_percentage $gpu_percentage $top_users"
+}
+
+# Coloring function
+apply_color() {
+    local value=$1
+    local threshold_high=$2
+    local threshold_medium=$3
+    local color
+
+    if [ "$value" -gt "$threshold_high" ]; then
+        colored_text=$(format_numbers "$value" "$RED")
+    elif [ "$value" -gt "$threshold_medium" ]; then
+        colored_text=$(format_numbers "$value" "$YELLOW")
+    else
+        colored_text=$(format_numbers "$value" "$NC")
+    fi
+
+    echo "$colored_text"
+}
+
+format_numbers() {
+    local value=$1
+    local color=$2
+
+    if [ "$value" -lt "99" ]; then # Correct formatting based on number of digits
+        colored_text="${color}$(echo "$value" | awk '{printf "  %.1f", $1/10}')${NC}"
+    elif [ "$value" -lt "999" ]; then
+        colored_text="${color}$(echo "$value" | awk '{printf " %.1f", $1/10}')${NC}"
+    else
+        colored_text="${color}$(echo "$value" | awk '{printf "%.1f", $1/10}')${NC}"
+    fi
+    echo "$colored_text"
+}
+
+if test -f ./.cel_machines; then
+    header="Server     |  CPU% |  MEM% |  GPU% | Top 3 Users (CPU%)          "
+    separator_length=${#header}
+
+    echo "$header"
+    printf '%*s\n' "$separator_length" '' | tr ' ' -
+
+    while read -r server_line; do
+        # Extract server name
+        server_line=$(echo "$server_line" | xargs)
+        if [ -z "$server_line" ]; then
+            continue # Skip empty lines
+        fi
+
+        name=$(echo "$server_line" | awk -F '[:,]' '{print tolower($1)}' | xargs)
+        if [ -z "$name" ]; then
+            continue # Skip lines without server names
+        fi
+        server=${name}${domain}
+
+        # Try to connect to the server
+        ssh -n -o ConnectTimeout=1 $username@$server exit 2>/dev/null
+
+        if [ $? -ne 0 ]; then # Connection failure
+            printf "%-10s | Failed to connect to %s\n" "$name" "$server"
+        else
+            read -r cpu_percentage mem_percentage gpu_percentage top_users <<< $(get_server_utilization $server $username)
+
+            cpu_colored=$(apply_color "$cpu_percentage" "$THRESHOLD_HIGH" "$THRESHOLD_MEDIUM")
+            mem_colored=$(apply_color "$mem_percentage" "$THRESHOLD_HIGH" "$THRESHOLD_MEDIUM")
+            if [ "$gpu_percentage" != "*" ]; then
+                gpu_colored=$(apply_color "$gpu_percentage" "$THRESHOLD_HIGH" "$THRESHOLD_MEDIUM")
+            else
+                gpu_colored="$gpu_percentage"
+            fi
+
+            # Print the content line
+            content=$(printf "%-10s | %5s | %5s | %5s | %-32s\n" "$name" "$cpu_colored" "$mem_colored" "$gpu_colored" "$top_users")
+            echo -e "$content"
+        fi
+    done < ./.cel_machines
+
+    printf '%*s\n' "$separator_length" '' | tr ' ' -
+fi

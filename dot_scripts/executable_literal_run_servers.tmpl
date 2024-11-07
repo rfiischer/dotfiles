@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Partially created with ChatGPT
+
+# Name of the local tmux session
+DOMAIN="{{.domain}}"
+USER="{{.cel_username}}"
+COMMAND=$1
+
+# Check if the server list file exists
+if test -f ./.cel_machines; then
+    # Loop on all machines 
+    while read -r SERVER_LINE; do
+        NAME=$(echo "$SERVER_LINE" | awk -F '[:,]' '{print tolower($1)}' | xargs)
+        SERVER=${USER}@${NAME}${DOMAIN}    	
+	echo "Running '$COMMAND' on $SERVER"
+	ssh -n $SERVER "$COMMAND"
+            
+    done < ./.cel_machines
+    
+fi

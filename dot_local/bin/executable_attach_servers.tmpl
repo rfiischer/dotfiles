@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Partially created with ChatGPT
 
 # Function to check for tmux sessions on remote server
@@ -8,8 +10,8 @@ check_remote_tmux_session() {
 
 # Name of the local tmux session
 LOCAL_TMUX_SESSION="servers"
-DOMAIN=".cel.kit.edu"
-USER="fischer"
+DOMAIN="{{.domain}}"
+USER="{{.cel_username}}"
 
 # Start a new tmux session if it doesn't already exist
 tmux has-session -t "$LOCAL_TMUX_SESSION" 2>/dev/null
