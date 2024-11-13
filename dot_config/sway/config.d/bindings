@@ -124,3 +124,5 @@ bindsym $mod+Shift+s exec swaylock
 # Notifications
 bindsym $mod+Shift+n exec swaync-client -t -sw
 
+# Screen capture
+bindsym Print exec slurp | GRIM_DEFAULT_DIR=$HOME/Pictures/Screenshots/ grim -g - 

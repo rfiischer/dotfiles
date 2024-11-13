@@ -1,14 +1,16 @@
 # Workspaces
 workspace 1 output DP-7
-workspace 2 output DP-6
-workspace 3 output eDP-1
+workspace 2 output DP-7
+workspace 3 output DP-7
 
-workspace 4 output DP-7
+workspace 4 output DP-6
 workspace 5 output DP-6
-workspace 6 output DP-7
+workspace 6 output DP-6
 workspace 7 output DP-6
+workspace 8 output eDP-1
 
+assign [instance=crx_cifhbcnohmdccbgoicgdjpfamggdegmo] number 2
+assign [class=Google-chrome] number 3
 assign [app_id=thunderbird-esr] number 5
-assign [instance=crx_cifhbcnohmdccbgoicgdjpfamggdegmo] number 4
-assign [class=Google-chrome] number 6
-assign [app_id=gnome-terminal-server] number 7
+assign [app_id=gnome-terminal-server] number 6
+assign [app_id=org.gnome.Nautilus] number 7

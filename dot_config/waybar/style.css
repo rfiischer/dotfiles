@@ -12,6 +12,8 @@ window#waybar {
   padding: 0 4px;
   min-width: 30px;
   transition: border-top 0.5s;
+  border: none;
+  border-radius: 0;
 }
 
 #workspaces button:hover{

@@ -7,3 +7,4 @@ exec /opt/google/chrome/google-chrome --profile-directory=Default --app-id=cifhb
 exec thunderbird
 exec google-chrome
 exec gnome-terminal
+exec nautilus
