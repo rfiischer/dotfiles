@@ -1,10 +1,10 @@
 # Autostart programs
 exec waybar
 exec swaync
-exec "/home/fischer/Downloads/bwSyncShare-Linux64-3.11.1-build-20334.AppImage" --background
 exec nm-applet
 exec /opt/google/chrome/google-chrome --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo
 exec thunderbird
 exec google-chrome
 exec gnome-terminal
 exec nautilus
+exec "/home/fischer/Downloads/bwSyncShare-Linux64-3.11.1-build-20334.AppImage" --background

@@ -1,10 +1,10 @@
 # Theme
-# class 			border 	background 	text 	indicator 	child_border 
-client.focused 			$teal1 	$gray0t		$white 	$teal2 		$teal1
-client.focused_inactive 	$yellow $gray0t		$gray3 	$teal2 		$gray0
-client.focused_tab_title 	$teal1 	$gray0t		$white
-client.urgent 			$gray0 	$yellowt 	$gray0 	$teal2 		$gray0
-client.unfocused 		$gray1 	$gray0t		$gray3 	$teal2 		$gray0
+# class 			        border 	        background 	        text 	        indicator 	        child_border 
+client.focused 			    $teal_90_85 	$gray_00_06_t		$white 	        $teal_30_85 		$teal_90_85
+client.focused_inactive 	$yellow_80_90   $gray_00_06_t		$teal_05_60     $teal_50_40 		$teal_100_10
+client.focused_tab_title 	$teal_90_85     $gray_00_06_t		$white
+client.urgent 			    $teal_100_10    $yellow_80_90_t 	$teal_100_10    $teal_50_40 		$teal_100_10
+client.unfocused 		    $teal_05_60     $gray_00_06_t		$teal_05_60 	$teal_50_40 		$teal_100_10
 
 font Ubuntu Mono Sans 10
 

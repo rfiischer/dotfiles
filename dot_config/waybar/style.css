@@ -11,30 +11,29 @@ window#waybar {
 #workspaces button {
   padding: 0 4px;
   min-width: 30px;
-  transition: border-top 0.5s;
+  transition: box-shadow 0.5s;
   border: none;
   border-radius: 0;
 }
 
 #workspaces button:hover{
-  border-top: 2px solid #abc7d6;
+  box-shadow: inset 0 2px shade(@rteal, 1.7);
 }
 
 #workspaces button.focused {
   background-color: rgba(0,0,0,0.3);
-  color:#0d98ba;
-  border-top: 2px solid #0d98ba;
+  color:@rteal;
+  box-shadow: inset 0 2px @rteal;
 }
 
 #workspaces button.urgent {
   color:#000010;
-  background-color: #f4dd5d;
-  border-top: 2px solid #000010;
+  background-color: shade(@ryellow, 0.9);
 }
 
 #mode {
-  background-color: #64727D;
-  border-bottom: 3px solid #eef1fd;
+  background-color: mix(shade(@rteal, 1.6), #000000, 0.2);
+  border-bottom: 3px solid #ffffff;
 }
 
 #clock,
@@ -43,16 +42,13 @@ window#waybar {
 #memory,
 #disk,
 #temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
 #tray,
-#mode,
 #idle_inhibitor,
 #scratchpad,
-#mpd {
+#custom-quit,
+#custom-power,
+#custom-reboot,
+#custom-lock {
   margin: 2px;
   padding-left: 4px;
   padding-right: 4px;
@@ -78,7 +74,7 @@ window#waybar {
 
 #battery.charging, #battery.plugged {
   color: #ffffff;
-  background-color: #26A65B;
+  background-color: shade(@rgreen, 0.8);
 }
 
 @keyframes blink {
@@ -88,37 +84,24 @@ window#waybar {
   }
 }
 
-#battery.warning:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
+#battery.warning:not(.charging),
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
+  background-color: shade(@rred, 0.9);
   color: #ffffff;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-}
-
-#network.disconnected {
-  background-color: #f53c3c;
 }
 
 #temperature.critical {
-  background-color: #eb4d4b;
+  background-color: shade(@rred, 0.9);
 }
 
 #idle_inhibitor.activated {
-  background-color: #ecf0f1;
-  color: #2d3436;
+  background-color: alpha(shade(@rteal, 1.8), 0.9);
+  color: mix(#000000, #ffffff, 0.1);
 }
 
 #tray > .passive {
@@ -127,5 +110,5 @@ window#waybar {
 
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
-  background-color: #eb4d4b;
+  background-color: shade(@rred, 0.9);
 }
