@@ -147,6 +147,8 @@ fi
 
 shopt -s extglob globstar
 
-alias vpn-kit="sudo openvpn --config ~/VPN/kit.ovpn"
+alias vpn-kit="tmux new-session -s vpn 'sudo openvpn --config ~/VPN/kit.ovpn'"
+
+alias ipadscr="tmux new-session -s wayvnc 'swaymsg create_output HEADLESS-1 && wayvnc --output=HEADLESS-1 -Ldebug'"
 
 export PATH="$HOME/.local/bin:$PATH"

@@ -11,6 +11,11 @@ workspace 8 output eDP-1
 
 assign [instance=crx_cifhbcnohmdccbgoicgdjpfamggdegmo] number 2
 assign [class=Google-chrome] number 3
-assign [app_id=thunderbird-esr] number 5
+assign [app_id=org.mozilla.Thunderbird] number 5
+assign [class=eu.betterbird.Betterbird] number 5
 assign [app_id=gnome-terminal-server] number 6
 assign [app_id=org.gnome.Nautilus] number 7
+
+for_window [app_id="org.gnome.Calculator"] floating enable, resize set width 500 height 600
+for_window [app_id="blueman-manager"] floating enable
+for_window [app_id="com.saivert.pwvucontrol"] floating enable

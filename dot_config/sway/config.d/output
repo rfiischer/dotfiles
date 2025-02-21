@@ -12,3 +12,9 @@ output eDP-1 resolution 1920x1200 position 3840,0
 bindswitch --reload --locked lid:on output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable
 
+# iPad output 
+output HEADLESS-1 {
+    mode 2360x1540
+    position 1952,0
+    scale 1.25
+}
