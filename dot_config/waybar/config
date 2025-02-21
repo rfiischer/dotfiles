@@ -1,7 +1,7 @@
 {
     "height": 24,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
-    "modules-right": ["idle_inhibitor", "group/hardware", "battery", "tray", "clock", "group/group-power"],
+    "modules-right": ["group/hardware", "idle_inhibitor", "battery", "backlight", "pulseaudio", "tray", "clock", "group/group-power"],
     "sway/workspaces": {
          "format": "{name} {icon}",
          "format-icons": {
@@ -87,7 +87,9 @@
         "format-icons": {
             "activated": "",
             "deactivated": ""
-        }
+        },
+        "tooltip-format-activated": "Idle inhibitor on",
+        "tooltip-format-deactivated": "Idle inhibitor off"
     },
     "tray": {
         "spacing": 10
@@ -120,5 +122,32 @@
         "format-plugged": " {capacity}%",
         "format-alt": "{icon} {time}",
         "format-icons": ["", "", "", "", ""]
+    },
+    "pulseaudio": {
+        "format-source": "",
+        "format-source-muted": "",
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-muted": " {format_source}",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "phone-muted": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=pwvucontrol com.saivert.pwvucontrol",
+        "ignored-sinks": ["Easy Effects Sink"]
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "<span font_family='Font Awesome 6 Free Solid'></span>"],
+        "tooltip": true,
+        "tooltip-format": "Brightness"
     }
 }

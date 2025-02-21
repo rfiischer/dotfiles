@@ -36,6 +36,14 @@ window#waybar {
   border-bottom: 3px solid #ffffff;
 }
 
+#custom-power,
+#custom-quit,
+#custom-lock,
+#custom-reboot {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
 #clock,
 #battery,
 #cpu,
@@ -45,10 +53,9 @@ window#waybar {
 #tray,
 #idle_inhibitor,
 #scratchpad,
-#custom-quit,
-#custom-power,
-#custom-reboot,
-#custom-lock {
+#backlight,
+#pulseaudio,
+#group-power {
   margin: 2px;
   padding-left: 4px;
   padding-right: 4px;
@@ -74,7 +81,7 @@ window#waybar {
 
 #battery.charging, #battery.plugged {
   color: #ffffff;
-  background-color: shade(@rgreen, 0.8);
+  background-color: shade(@rteal, 0.8);
 }
 
 @keyframes blink {
