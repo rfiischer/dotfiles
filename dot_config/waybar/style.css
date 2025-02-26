@@ -39,7 +39,8 @@ window#waybar {
 #custom-power,
 #custom-quit,
 #custom-lock,
-#custom-reboot {
+#custom-reboot,
+#custom-suspend {
   margin-left: 2px;
   margin-right: 2px;
 }
