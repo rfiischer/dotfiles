@@ -15,3 +15,13 @@
 # Enable NumLock on login
 input type:keyboard xkb_numlock enabled
 
+# Setup touchpad 
+input "1267:12693:ELAN0676:00_04F3:3195_Touchpad" {
+    natural_scroll enabled 
+    tap enabled
+}
+
+input "2:10:TPPS/2_Synaptics_TrackPoint" {
+    pointer_accel -0.8
+    accel_profile adaptive 
+}
