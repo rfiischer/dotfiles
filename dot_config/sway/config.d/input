@@ -25,3 +25,6 @@ input "2:10:TPPS/2_Synaptics_TrackPoint" {
     pointer_accel -0.8
     accel_profile adaptive 
 }
+
+# Setup virtual (iPad) mouse
+input "0:0:wlr_virtual_pointer_v1" scroll_factor 0.25
