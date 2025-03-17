@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# config hash: {{ include "dot_config/waybar/config" | sha256sum }}
+# style.css hash: {{ include "dot_config/waybar/style.css" | sha256sum }}
+killall waybar && waybar &

@@ -1,7 +1,8 @@
 {
     "height": 24,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
-    "modules-right": ["group/hardware", "idle_inhibitor", "battery", "backlight", "pulseaudio", "tray", "clock", "group/group-power"],
+    "modules-center": ["clock"],
+    "modules-right": ["group/hardware", "idle_inhibitor", "battery", "backlight", "pulseaudio", "tray", "group/group-power"],
     "sway/workspaces": {
          "format": "{name} {icon}",
          "format-icons": {
@@ -101,8 +102,27 @@
         "spacing": 10
     },
     "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:<small>%a</small> %d.%m.%Y %I:%M <tt><small>%p</small></tt>}"
+        "tooltip-format": "<tt>\n{calendar}</tt>",
+        "format": "{:%d.%m.%Y %H:%M}",
+        "smooth-scrolling-threshold": 0.5,
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 2,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#ffffff'><b>{}</b></span>",
+                "days":       "<span color='#ffffff'><b>{}</b></span>",
+                "weeks":      "<span color='#e8b5ff'><b>W{}</b></span>",
+                "weekdays":   "<span color='#e6ca2e'><b>{}</b></span>",
+                "today":      "<span color='#16b2d9'><b>{}</b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
     },
     "cpu": {
         "format": " {usage}%"

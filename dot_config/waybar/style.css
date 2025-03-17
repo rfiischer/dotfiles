@@ -1,34 +1,55 @@
+/* Global properties */
 * {
   font-family: "Ubuntu Sans Mono";
   font-size: 13px;
   min-height: 0;
 }
 
+/* Properties for the bar itself*/
 window#waybar {
   background: transparent;
+}
+
+/* Remove predefined button properties */
+button:hover {
+  background: none;
+  box-shadow: none;
+  text-shadow: none;
+  transition: none;
 }
 
 #workspaces button {
   padding: 0 4px;
   min-width: 30px;
-  transition: box-shadow 0.5s;
   border: none;
   border-radius: 0;
 }
 
 #workspaces button:hover{
-  box-shadow: inset 0 2px shade(@rteal, 1.7);
+  background-color: rgba(0,0,0,0);
+  box-shadow: inset 0 2px @rteal;
+  transition: box-shadow 0.5s;
 }
 
 #workspaces button.focused {
-  background-color: rgba(0,0,0,0.3);
-  color:@rteal;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0));
   box-shadow: inset 0 2px @rteal;
+  color: @rteal;
+  transition: none;
 }
 
 #workspaces button.urgent {
-  color:#000010;
-  background-color: shade(@ryellow, 0.9);
+  background-color: rgba(0,0,0,0.9);
+  box-shadow: none;
+  color: @ryellow;
+  transition: none;
+}
+
+#workspaces button.urgent:hover {
+  background-color: rgba(0,0,0,0.9);
+  box-shadow: inset 0 2px @ryellow;
+  color: @ryellow;
+  transition: box-shadow 0.5s;
 }
 
 #mode {
