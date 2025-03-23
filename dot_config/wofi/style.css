@@ -1,0 +1,43 @@
+#window {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid @rteal;
+    border-radius: 5px;
+}
+
+#outer-box {
+    padding: 10px;
+}
+
+#img {
+    all: unset;
+}
+
+#text {
+    padding-left: 5px;
+    color: shade(@rteal, 1.6);
+}
+
+#entry {
+    all: unset;
+}
+
+#entry:focus {
+    border: 2px solid shade(@rteal, 0.9);
+    border-radius: 5px;
+    padding-left: 5px;
+    background-color: alpha(@rteal, 0.2);
+}
+ 
+#input {
+    all: unset;
+    margin-bottom: 5px;
+    padding: 5px;
+    color: shade(@rteal, 1.6);
+    background-color: shade(@rteal, 0.2);
+    border: 1px solid shade(@rteal, 0.3);
+    border-radius: 5px;
+}
+
+#input:focus {
+    border: 1px solid shade(@rteal, 0.9);
+}
