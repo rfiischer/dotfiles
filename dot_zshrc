@@ -1,0 +1,44 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt autocd extendedglob notify
+unsetopt beep
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/fischer/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/fischer/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/fischer/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/fischer/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/fischer/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# Settings by Rodrigo
+ssh-cel() {
+    ssh fischer@$1.cel.kit.edu
+}
+
+alias git-cel="ssh git@gw1.cel.kit.edu"
+alias vpn-kit="tmux new-session -s vpn 'sudo openvpn --config ~/VPN/kit.ovpn'"
+alias ipadscr="tmux new-session -s wayvnc 'swaymsg create_output HEADLESS-1 && wayvnc --output=HEADLESS-1 -Ldebug'"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+# antigen
+source antigen.zsh
+antigen init .antigenrc
