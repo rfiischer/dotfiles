@@ -116,13 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# customization of bash done by Rodrigo:
-ssh-cel() {
-    ssh {{.cel_username}}@$1{{.domain}}
-}
-
-alias git-cel="ssh git@{{.data_server}}"
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/fischer/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -138,17 +131,15 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-if test -f ~/.cel_machines; then
-    SSH_AUTOCOMPLETE=$(cat ~/.cel_machines | awk -F ':|,' '{printf tolower($1)" "}')
-    alias list-cel='cat ~/.cel_machines'
-    complete -W "${SSH_AUTOCOMPLETE}" ssh-cel
-    alias chkload-cel="source ~/.scripts/check_server_utilization"
-fi
+# customization of bash done by Rodrigo:
+ssh-cel() {
+    ssh {{.cel_username}}@$1{{.domain}}
+}
+
+alias git-cel="ssh git@{{.data_server}}"
+alias vpn-kit="tmux new-session -s vpn 'sudo openvpn --config ~/VPN/kit.ovpn'"
+alias ipadscr="tmux new-session -s wayvnc 'swaymsg create_output HEADLESS-1 && wayvnc --output=HEADLESS-1 -Ldebug'"
 
 shopt -s extglob globstar
-
-alias vpn-kit="tmux new-session -s vpn 'sudo openvpn --config ~/VPN/kit.ovpn'"
-
-alias ipadscr="tmux new-session -s wayvnc 'swaymsg create_output HEADLESS-1 && wayvnc --output=HEADLESS-1 -Ldebug'"
 
 export PATH="$HOME/.local/bin:$PATH"
