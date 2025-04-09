@@ -1,0 +1,10 @@
+# customization of bash/zsh done by Rodrigo:
+ssh-cel() {
+    ssh {{.cel_username}}@$1{{.domain}}
+}
+
+alias git-cel="ssh git@{{.data_server}}"
+alias vpn-kit="tmux new-session -s vpn 'sudo openvpn --config ~/VPN/kit.ovpn'"
+alias ipadscr="tmux new-session -s wayvnc 'swaymsg create_output HEADLESS-1 && wayvnc --output=HEADLESS-1 -Ldebug'"
+
+export PATH="$PATH:$HOME/.local/bin:$HOME/chezmoi:$HOME/.local/share/nvim-linux-x86_64/bin"
