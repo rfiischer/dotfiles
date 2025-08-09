@@ -13,3 +13,7 @@ set $term gnome-terminal
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu wofi --show drun -I -p "Launch"
+
+# Output monitors 
+set $outleft "Acer Technologies Acer B277 0x3121BFE0" 
+set $outright "Acer Technologies Acer B277 0x3121BFF0" 
