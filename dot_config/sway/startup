@@ -4,9 +4,9 @@ exec swaync
 exec nm-applet
 exec /opt/google/chrome/google-chrome --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo
 exec /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=betterbird --file-forwarding eu.betterbird.Betterbird @@u %u @@
-exec google-chrome
+exec brave-browser
 exec gnome-terminal
 exec nautilus
-exec "/home/fischer/Downloads/bwSyncShare-Linux64-3.15.3-build-27962.AppImage" --background
+exec "/home/fischer/Downloads/bwSyncShare-Linux64-3.16.2-build-29669.AppImage" --background
 exec blueman-applet
 exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1
