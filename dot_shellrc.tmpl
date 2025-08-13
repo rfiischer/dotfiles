@@ -1,6 +1,14 @@
 # customization of bash/zsh done by Rodrigo:
 ssh-cel() {
-    ssh {{.cel_username}}@$1{{.domain}}
+    case "$1" in
+        -s)
+            ssh {{.cluster_username}}@$2{{.domain}}
+            ;;
+        
+        *)
+            ssh {{.cel_username}}@$1{{.domain}}
+            ;;
+    esac
 }
 
 alias git-cel="ssh git@{{.data_server}}"
