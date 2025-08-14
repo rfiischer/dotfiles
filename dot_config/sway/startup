@@ -2,7 +2,7 @@
 exec waybar
 exec swaync
 exec nm-applet
-exec /opt/google/chrome/google-chrome --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo
+exec /opt/brave.com/brave/brave-browser --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo 
 exec /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=betterbird --file-forwarding eu.betterbird.Betterbird @@u %u @@
 exec brave-browser
 exec gnome-terminal
